@@ -1,0 +1,15 @@
+\begin{table}[htbp]
+    \centering
+    \caption{Performance evaluation across deployment configurations.}
+    \label{tab:performance-comparison}
+    \begin{tabular}{lrrr}
+        \toprule
+        \textbf{Architecture} & \textbf{Latency (ms)} & \textbf{Throughput (req/s)} & \textbf{Memory (MB)} \\
+        \midrule
+        Monolithic            & 142.5                 & 1,200                       & 512                  \\
+        Microservices         & 88.2                  & 3,450                       & 1,024                \\
+        Serverless            & 210.0                 & 5,000+                      & Dynamic              \\
+        \textbf{Proposed}     & \textbf{45.1}         & \textbf{8,900}              & \textbf{256}         \\
+        \bottomrule
+    \end{tabular}
+\end{table}

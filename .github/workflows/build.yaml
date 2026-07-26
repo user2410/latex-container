@@ -1,0 +1,32 @@
+name: Build Thesis PDF
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch: # Allows manual trigger from the GitHub Actions UI
+
+jobs:
+  build_latex:
+    name: Compile LaTeX Document
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+
+      - name: Compile LaTeX PDF
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: main.tex
+          # latexmk reads your repository's root .latexmkrc automatically
+          args: "-pdf -file-line-error -interaction=nonstopmode"
+
+      - name: Upload PDF Artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: thesis-pdf
+          path: output/main.pdf
+          if-archive-exists: fail
+          retention-days: 30

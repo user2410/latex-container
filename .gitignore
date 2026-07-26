@@ -1,0 +1,24 @@
+# Out-of-source output folder
+output/
+
+# TeX temporary/auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bcf
+*.run.xml
+*.bbl
+*.blg
+*.lof
+*.lot
+
+# OS / Editor specific
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json

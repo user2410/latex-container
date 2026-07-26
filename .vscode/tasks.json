@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "LaTeX: Build Document",
+      "type": "shell",
+      "command": "latexmk -pdf main.tex",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "LaTeX: Live Watch (pvc)",
+      "type": "shell",
+      "command": "latexmk -pvc -pdf main.tex",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "LaTeX: Clean Build Directory",
+      "type": "shell",
+      "command": "make clean",
+      "problemMatcher": []
+    }
+  ]
+}

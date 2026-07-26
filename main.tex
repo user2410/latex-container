@@ -1,0 +1,57 @@
+\documentclass[12pt, a4paper, oneside]{report}
+
+% --- Essential Packages ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[hidelinks, pdfpagelabels, plainpages=false]{hyperref}
+\usepackage[backend=biber, style=numeric, sorting=none]{biblatex}
+
+% --- Global Asset Paths ---
+\graphicspath{{assets/figures/}}
+
+% --- Bibliography Resource ---
+\addbibresource{references.bib}
+
+% --- Document Metadata ---
+\title{A Scalable Framework for Automated Systems}
+\author{Alex Morgan}
+\date{\today}
+
+\begin{document}
+
+% --- Frontmatter ---
+\pagenumbering{alph} % Assigns temporary 'a, b' anchors to prevent title page collision
+\input{frontmatter/titlepage}
+
+\clearpage
+\pagenumbering{roman}
+\input{frontmatter/titlepage}
+\input{frontmatter/abstract}
+\input{frontmatter/acknowledgments}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+
+% --- Main Chapters ---
+\pagenumbering{arabic}
+\include{chapters/01-introduction}
+\include{chapters/02-background}
+\include{chapters/03-methodology}
+\include{chapters/04-evaluation}
+\include{chapters/05-conclusion}
+
+% --- Bibliography ---
+\printbibliography[heading=bibintoc, title={References}]
+
+% --- Backmatter / Appendices ---
+\appendix
+\include{backmatter/appendix-a}
+
+\end{document}
