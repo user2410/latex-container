@@ -26,7 +26,9 @@
 
 % --- Frontmatter ---
 \pagenumbering{alph} % Assigns temporary 'a, b' anchors to prevent title page collision
+\hypersetup{pageanchor=false}
 \input{frontmatter/titlepage}
+\hypersetup{pageanchor=true}
 
 \clearpage
 \pagenumbering{roman}
