@@ -6,7 +6,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Initialize and update the local package manager
-RUN tlmgr update --self
+# Point to primary CTAN multiplexer and bypass transient mirror verification errors if needed
+RUN tlmgr option repository https://mirror.ctan.org/systems/texlive/tlnet \
+    && (tlmgr update --self || tlmgr update --self --verify-repo=none)
 
 # ==========================================
 # CUSTOMIZABLE EXTENSIONS (Uncomment as needed)
@@ -29,3 +31,5 @@ RUN tlmgr update --self
 # RUN tlmgr install collection-publishers  # Book classes & journal templates
 # RUN tlmgr install collection-music      # Music notation
 # RUN tlmgr install collection-games      # Chess notation
+
+WORKDIR /workdir
