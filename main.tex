@@ -25,13 +25,13 @@
 \begin{document}
 
 % --- Frontmatter ---
-\pagenumbering{alph} % Assigns temporary 'a, b' anchors to prevent title page collision
 \hypersetup{pageanchor=false}
 \input{frontmatter/titlepage}
-\hypersetup{pageanchor=true}
 
 \clearpage
+\hypersetup{pageanchor=true}
 \pagenumbering{roman}
+
 \input{frontmatter/titlepage}
 \input{frontmatter/abstract}
 \input{frontmatter/acknowledgments}
