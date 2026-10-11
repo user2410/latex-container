@@ -1,8 +1,10 @@
 FROM docker.io/texlive/texlive@sha256:2db1a954cee7a44d25f76f0a610f318727577954203d44e3999d019e81de390b
 
 # 1. Install git (required for VSCode Git integration and safe.directory config)
+#    and the ssh client (required for git over SSH remotes)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
+    openssh-client \
     && rm -rf /var/lib/apt/lists/*
 
 # Initialize and update the local package manager
