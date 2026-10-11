@@ -10,7 +10,7 @@ A modular, production-ready LaTeX template engineered for long-form academic wri
 
 ## Key Architectural Principles
 
-* **Out-of-Source Compilation:** All build artifacts (`.aux`, `.log`, `.toc`, `.bcf`) and the final PDF land strictly inside the `build/` directory. Your root workspace stays completely clean.
+* **Out-of-Source Compilation:** All build artifacts (`.aux`, `.log`, `.toc`, `.bcf`) and the final PDF land strictly inside the `output/` directory. Your root workspace stays completely clean.
 * **Zero Editor Latency:** LaTeX Workshop's auto-build on save is disabled by default to eliminate background disk I/O, CPU spikes, and file locking conflicts.
 * **Single Source of Truth (`.latexmkrc`):** Build tools, directories, and compiler flags are driven by the project's root `.latexmkrc` rather than editor settings or custom CLI wrappers.
 * **Instant Containerized Onboarding:** Ready to edit in **GitHub Codespaces** or local **VS Code Devcontainers** with full TeX Live and `biber` pre-installed.
@@ -38,7 +38,7 @@ A modular, production-ready LaTeX template engineered for long-form academic wri
 │   ├── abstract.tex
 │   ├── acknowledgments.tex
 │   └── titlepage.tex
-├── .gitignore              # Pre-configured to ignore build/ and OS artifacts
+├── .gitignore              # Pre-configured to ignore output/ and OS artifacts
 ├── .latexmkrc              # Central build rules for latexmk
 ├── Makefile                # Command-line convenience wrapper
 ├── main.tex                # Master TeX document orchestrator
@@ -97,7 +97,7 @@ make watch
 
 ### 3. Cleaning Output Files
 
-To wipe the `build/` directory and reset all auxiliary state:
+To wipe the `output/` directory and reset all auxiliary state:
 
 * **Command Line:**
 ```bash

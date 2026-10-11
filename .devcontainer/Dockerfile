@@ -1,4 +1,4 @@
-FROM texlive/texlive@sha256:2db1a954cee7a44d25f76f0a610f318727577954203d44e3999d019e81de390b
+FROM docker.io/texlive/texlive@sha256:2db1a954cee7a44d25f76f0a610f318727577954203d44e3999d019e81de390b
 
 # 1. Install git (required for VSCode Git integration and safe.directory config)
 RUN apt-get update && apt-get install -y --no-install-recommends \
