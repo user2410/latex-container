@@ -30,8 +30,8 @@
 			}
 		}
 	},
-	"workspaceMount": "source=${localWorkspaceFolder},target=/workdir,type=bind",
-	"workspaceFolder": "/workdir",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 	// Share the host SSH config, known_hosts and keys (read-only) so git over SSH behaves as on the host
 	"mounts": [
 		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,readonly"

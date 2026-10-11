@@ -34,4 +34,3 @@ RUN tlmgr option repository https://mirror.ctan.org/systems/texlive/tlnet \
 # RUN tlmgr install collection-music      # Music notation
 # RUN tlmgr install collection-games      # Chess notation
 
-WORKDIR /workdir
