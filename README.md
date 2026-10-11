@@ -40,6 +40,7 @@ A modular, production-ready LaTeX template engineered for long-form academic wri
 │   └── titlepage.tex
 ├── .gitignore              # Pre-configured to ignore output/ and OS artifacts
 ├── .latexmkrc              # Central build rules for latexmk
+├── LICENSE                 # MIT License
 ├── Makefile                # Command-line convenience wrapper
 ├── main.tex                # Master TeX document orchestrator
 ├── references.bib          # BibLaTeX database
@@ -104,6 +105,37 @@ To wipe the `output/` directory and reset all auxiliary state:
 make clean
 
 ```
+
+---
+
+## Dev Container Notes
+
+The container works with both **Docker** and **Podman** (including rootless Podman on Fedora).
+
+### Git Inside the Container
+
+* **Commit identity:** VS Code copies your host `~/.gitconfig` into the container, so commits are authored with your own `user.name` / `user.email`. Nothing in this template carries the original author's identity.
+* **SSH remotes:** The image ships an SSH client, and your host `~/.ssh` directory is mounted **read-only** at `/root/.ssh`. Your SSH config, `known_hosts`, and keys behave exactly as on the host, so `git push` / `git pull` over SSH work unchanged.
+  * Your private keys are readable inside the container.
+  * Host keys for servers you first contact from inside the container are not saved, because the mount is read-only.
+  * The container will not start if `~/.ssh` does not exist on the host. Create it (`mkdir -m 700 ~/.ssh`) or remove the `mounts` entry from `.devcontainer/devcontainer.json`.
+
+### Container User
+
+The container runs as `root`. This is deliberate:
+
+* Under rootless Podman, a non-root container user cannot write to the mounted workspace without the Podman-only `--userns=keep-id` flag, which would break Docker.
+* `tlmgr install` needs write access to the root-owned TeX Live tree.
+
+Under rootless Podman, container `root` maps to your own unprivileged host user. Under rootful Docker on Linux, files the container creates (such as `output/`) are owned by `root` on the host.
+
+### Workspace Folder Name
+
+The repository is mounted at `/workspaces/<your-folder-name>`, so the VS Code window title shows the name of your local project folder.
+
+### Base Image
+
+The base image in `.devcontainer/Dockerfile` is fully qualified (`docker.io/texlive/texlive@sha256:...`) and pinned by digest. The explicit registry prevents Podman's interactive "select an image" prompt, which would otherwise hang the build.
 
 ---
 
