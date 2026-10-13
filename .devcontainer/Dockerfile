@@ -1,4 +1,5 @@
-FROM docker.io/texlive/texlive@sha256:2db1a954cee7a44d25f76f0a610f318727577954203d44e3999d019e81de390b
+# docker.io/texlive/texlive:latest-small [2026-10-11]
+FROM docker.io/texlive/texlive@sha256:956ab3808fc77b0057c0f8b6db5329642b8db7a33492460b9891862b72334f3c
 
 # 1. Install git (required for VSCode Git integration and safe.directory config)
 #    and the ssh client (required for git over SSH remotes)
