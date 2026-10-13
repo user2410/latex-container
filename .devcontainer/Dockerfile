@@ -4,6 +4,7 @@ FROM docker.io/texlive/texlive@sha256:2db1a954cee7a44d25f76f0a610f31872757795420
 #    and the ssh client (required for git over SSH remotes)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
+    curl \
     openssh-client \
     && rm -rf /var/lib/apt/lists/*
 
@@ -11,6 +12,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Point to primary CTAN multiplexer and bypass transient mirror verification errors if needed
 RUN tlmgr option repository https://mirror.ctan.org/systems/texlive/tlnet \
     && (tlmgr update --self || tlmgr update --self --verify-repo=none)
+
+# Install texfot for output processing
+RUN curl -sSL https://mirrors.ctan.org/support/texfot/texfot.pl -o /usr/local/bin/texfot \
+    && chmod +x /usr/local/bin/texfot
 
 # ==========================================
 # CUSTOMIZABLE EXTENSIONS (Uncomment as needed)
